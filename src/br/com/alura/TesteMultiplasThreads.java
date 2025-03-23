@@ -7,12 +7,12 @@ import java.util.concurrent.Executors;
 
 public class TesteMultiplasThreads {
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newFixedThreadPool(10000);
+        ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
         Instant inicio = Instant.now();
 
         try (ExecutorService e = executor) {
-            for (int i = 1; i < 10000; i++) {
+            for (int i = 1; i < 50000; i++) {
                 var tarefa = new ExecutaTarefa();
                 e.execute(tarefa);
             }
