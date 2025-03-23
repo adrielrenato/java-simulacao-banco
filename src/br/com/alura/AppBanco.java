@@ -8,8 +8,11 @@ public class AppBanco {
         var conta = new Conta(cliente, new BigDecimal("150"));
         var operacao = new OperacaoSaque(conta, new BigDecimal("150"));
 
-        Thread saqueJoao = new Thread(operacao);
-        Thread saqueMaria = new Thread(operacao);
+//        Thread saqueJoao = new Thread(operacao);
+//        Thread saqueMaria = new Thread(operacao);
+
+        Thread saqueJoao = Thread.startVirtualThread(operacao);
+        Thread saqueMaria = Thread.startVirtualThread(operacao);
 
         saqueJoao.start();
         saqueMaria.start();
